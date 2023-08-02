@@ -22,7 +22,7 @@ canvas[resize] {
     background-color: #5a5353;
     padding: 10px;
     z-index: 999;
-    flex-wrap: wrap; /* Allow menu items to wrap to a new line */
+    /* flex-wrap: wrap; Allow menu items to wrap to a new line */
 }
 
 #iconbuttons {
