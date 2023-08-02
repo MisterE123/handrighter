@@ -22,6 +22,7 @@ canvas[resize] {
     background-color: #5a5353;
     padding: 10px;
     z-index: 999;
+    user-select: none;
     /* flex-wrap: wrap; Allow menu items to wrap to a new line */
 }
 
@@ -43,6 +44,7 @@ canvas[resize] {
     margin: 4px; /* Add some space between the icon buttons */
 
 }
+
 
 .icon-button:hover {
     background-color: #666;

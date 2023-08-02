@@ -37,6 +37,10 @@ document.getElementById('zoomOutButton').addEventListener('click', function() {
     main_api.zoom(1/1.2); // Zoom out by 20%
 });
 
+document.getElementById('zoomFulltButton').addEventListener('click', function() {
+    main_api.fitToWidth(); // Zoom to page
+});
+
 document.addEventListener('paperjs-loaded', (event) => {
     loaded = true
     main_api.load_new_doc();

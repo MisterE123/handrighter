@@ -1,5 +1,5 @@
-var y_padding = 74
-var x_padding = 74
+var y_padding = 20
+var x_padding = 20
 
 var pages = [];
 var docSettings = doc_settings;
@@ -109,7 +109,6 @@ var currentPath;
 var originalPage;
 
 drawingTool.onMouseDown = function(event) {
-	console.log('Mouse down at', event.point, 'on page', getActivePage(event.point));
 	var activePage = getActivePage(event.point);
 	if (activePage) {
 		originalPage = activePage; // Save the original page
@@ -121,7 +120,6 @@ drawingTool.onMouseDown = function(event) {
 		currentPath.strokeCap = 'round'; // Round the ends of the stroke
 		currentPath.strokeJoin = 'round'; // Round the corners of the stroke
 		currentPath.add(event.point);
-		console.log(currentPath)
 	}
 };
 
@@ -129,7 +127,6 @@ drawingTool.onMouseDrag = function(event) {
 	var activePage = getActivePage(event.point);
 	if (currentPath && originalPage === activePage) { // Check if the active page has changed
 		currentPath.add(event.point);
-		console.log("adding point at ",event.point)
 	} else if (currentPath) {
 		if (docSettings.simplify_paths) {
 			currentPath.simplify(); // Simplify the path if the drawing runs off the page
@@ -239,14 +236,8 @@ panningTool.onMouseDrag = function(event) {
 	lastMousePoint = event.point;
 };
 
-
-
-
-
-
 // tool selector
 main_api.setActiveTool = function(toolName) {
-	console.log('Activating tool:', toolName);
 	switch (toolName) {
 		case 'drawing':
 			drawingTool.activate();
@@ -267,6 +258,28 @@ main_api.zoom = function(factor) {
 	view.zoom *= factor
 	doc_settings.view_zoom = view.zoom
 }
+
+main_api.fitToWidth = function() {
+	// Get the width of the page, considering the first page's width as a reference
+	var pageWidth = pages[0].page_size.width;
+  
+	// Calculate the total width including padding
+	var totalWidth = pageWidth + 2 * x_padding;
+  
+	// Calculate the desired zoom level to fit the total width into the current view
+	var zoomFactor = view.size.width / totalWidth;
+  
+	// Apply the zoom factor
+	view.zoom = zoomFactor;
+	doc_settings.view_zoom = zoomFactor;
+  
+	// Update the view center to align the x-axis
+	var newCenterX = (pageWidth / 2) + x_padding;
+	doc_settings.view_center = new Point(newCenterX, view.center.y);
+	view.center = doc_settings.view_center;
+  };
+  
+  
 
 
 // signal that we are ready to load
