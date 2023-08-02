@@ -1,0 +1,35 @@
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+
+}
+
+/* Scale canvas with resize attribute to full size */
+canvas[resize] {
+    width: 100%;
+    height: 100%;
+    background-color: #0c0c0b;
+}
+
+#menu {
+    position: absolute; /* or 'fixed' */
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: #5a5353;
+    padding: 10px;
+}
+#colorSwatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+#colorSwatches button {
+    border: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
