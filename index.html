@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- icons -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        
         <!-- Load the Paper.js library from a CDN -->
         <script type="text/javascript" src="js/doc_settings.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.17/paper-full.js"></script>
@@ -12,6 +15,21 @@
     <body>
         <div id="menu">
             <div id="colorSwatches"></div>
+            <div id="iconbuttons">
+            <input type="range" id="penSize" min="1" max="10" value="1">
+            <span id="pen" class="icon-button" title="Pen"><i class="material-symbols-outlined">ink_pen</i></span>
+            <span id="eraser" class="icon-button" title="Eraser"><i class="material-symbols-outlined">ink_eraser</i></span>
+            <span id="pan" class="icon-button" title="Pan"><i class="material-symbols-outlined">open_with</i></span>
+            <span id="zoomInButton" class="icon-button" title="Zoom In"><i class="material-symbols-outlined">zoom_in</i></span>
+            <span id="zoomOutButton" class="icon-button" title="Zoom Out"><i class="material-symbols-outlined">zoom_out</i></span>
+            <span id="save" class="icon-button" title="Save"><i class="material-symbols-outlined">save</i></span>
+            <span id="open" class="icon-button" title="Open"><i class="material-symbols-outlined">folder_open</i></span>
+            <span id="export" class="icon-button" title="Export to PDF"><i class="material-symbols-outlined">picture_as_pdf</i></span>
+            </div>
+        </div>
+        
+        <!-- <div id="menu">
+            <div id="colorSwatches"></div>
             <input type="range" id="penSize" min="1" max="10" value="1">
             <button id="pen">Pen</button>
             <button id="eraser">Eraser</button>
@@ -21,7 +39,7 @@
             <button id="save">Save</button>
             <button id="open">Open</button>
             <button id="export">Export to PDF</button>
-        </div>
+        </div> -->
         <canvas id="myCanvas" resize></canvas>
         <script type="text/javascript" src="js/controls.js"></script>
     </body>

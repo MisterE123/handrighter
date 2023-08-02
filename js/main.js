@@ -177,7 +177,7 @@ eraserTool.onMouseDown = function(event) {
 		originalPage = activePage; // Save the original page
 		activePage.page_layer.activate();
 		eraserPath = new Path();
-		eraserPath.strokeColor = '#00000000'; // You can set this to a transparent color if you want
+		eraserPath.strokeColor = 'red'; // You can set this to a transparent color if you want
 		eraserPath.strokeWidth = doc_settings.pen_size; // Adjust eraser size as needed
 		eraserPath.add(event.point);
 	}
@@ -189,11 +189,23 @@ eraserTool.onMouseDrag = function(event) {
 		eraserPath.add(event.point);
 		eraseIntersectingPaths(); // Erase intersecting paths live as the user drags
 	} else if (eraserPath) {
-		eraseIntersectingPaths(); // Erase intersecting paths if the eraser runs off the page
 		eraserPath.remove(); // Remove the eraser path itself
 		eraserPath = null;
 	}
 };
+
+function eraseIntersectingPaths() {
+	var toRemove = [];
+	originalPage.page_layer.children.forEach(function(path) {
+		if (path !== eraserPath && path.intersects(eraserPath)) {
+			toRemove.push(path);
+		}
+	});
+	toRemove.forEach(function(path) {
+		path.remove();
+	});
+}
+
 
 eraserTool.onMouseUp = function(event) {
 	if (eraserPath) {

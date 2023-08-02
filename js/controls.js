@@ -16,7 +16,6 @@ document.getElementById('penSize').addEventListener('input', (event) => {
     doc_settings.pen_size = event.target.value;
 });
 
-
 // tool selectors
 document.getElementById('pen').addEventListener('click', function() {
     main_api.setActiveTool('drawing');

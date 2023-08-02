@@ -11,21 +11,64 @@ canvas[resize] {
     height: 100%;
     background-color: #0c0c0b;
 }
-
 #menu {
-    position: absolute; /* or 'fixed' */
+    position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    align-items: center;
     background-color: #5a5353;
     padding: 10px;
+    z-index: 999;
+    flex-wrap: wrap; /* Allow menu items to wrap to a new line */
 }
+
+#iconbuttons {
+    flex-wrap: wrap; /* Allow menu items to wrap to a new line */
+}
+
+.icon-button {
+    cursor: pointer;
+    display: flex; /* Add this to make the icons centered */
+    justify-content: center; /* Add this to make the icons centered */
+    align-items: center; /* Add this to make the icons centered */
+    width: 40px; /* Set a fixed width */
+    height: 40px; /* Set a fixed height */
+    border-radius: 50%; /* Make the icons circular */
+    background-color: #888;
+    transition: background-color 0.2s;
+    flex: 0 0 auto;
+    margin: 4px; /* Add some space between the icon buttons */
+
+}
+
+.icon-button:hover {
+    background-color: #666;
+}
+
+/* Set the font and size for Material Icons */
+.material-icons {
+    font-family: "Material Icons";
+    font-size: 20px; /* Reduce the font size */
+    line-height: 1;
+}
+
+
+
 #colorSwatches {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
+}
+
+/* Style each color swatch as a circle */
+#colorSwatches button {
+    width: 30px; /* Adjust the size of the swatch */
+    height: 30px; /* Adjust the size of the swatch */
+    border-radius: 50%; /* This makes the element circular */
+    cursor: pointer; /* Optional: Add a pointer cursor on hover */
 }
 #colorSwatches button {
     border: none;
