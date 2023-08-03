@@ -267,7 +267,8 @@ main_api.fitToWidth = function() {
 	var totalWidth = pageWidth + 2 * x_padding;
   
 	// Calculate the desired zoom level to fit the total width into the current view
-	var zoomFactor = view.size.width / totalWidth;
+	console.log(view.viewSize)
+	var zoomFactor = view.viewSize.width / totalWidth;
   
 	// Apply the zoom factor
 	view.zoom = zoomFactor;
@@ -277,9 +278,7 @@ main_api.fitToWidth = function() {
 	var newCenterX = (pageWidth / 2) + x_padding;
 	doc_settings.view_center = new Point(newCenterX, view.center.y);
 	view.center = doc_settings.view_center;
-  };
-  
-  
+};
 
 
 // signal that we are ready to load
