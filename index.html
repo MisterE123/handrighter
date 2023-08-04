@@ -13,34 +13,69 @@
         
     </head>
     <body>
-        <div id="menu">
-            <div id="colorSwatches"></div>
-            <input type="range" id="penSize" min="1" max="10" value="1">
-            <span id="pen" class="icon-button" title="Pen"><i class="material-symbols-outlined">ink_pen</i></span>
-            <span id="eraser" class="icon-button" title="Eraser"><i class="material-symbols-outlined">ink_eraser</i></span>
-            <span id="pan" class="icon-button" title="Pan"><i class="material-symbols-outlined">open_with</i></span>
-            <span id="zoomInButton" class="icon-button" title="Zoom In"><i class="material-symbols-outlined">zoom_in</i></span>
-            <span id="zoomOutButton" class="icon-button" title="Zoom Out"><i class="material-symbols-outlined">zoom_out</i></span>
-            <span id="zoomFulltButton" class="icon-button" title="Fit Width"><i class="material-symbols-outlined">zoom_out_map</i></span>
-            <span id="newPage" class="icon-button" title="New Page"><i class="material-symbols-outlined">note_add</i></span>
-            <span id="delPage" class="icon-button" title="Delete Page"><i class="material-symbols-outlined">scan</i></span>                      
-            <span id="save" class="icon-button" title="Save"><i class="material-symbols-outlined">save</i></span>
-            <span id="open" class="icon-button" title="Open"><i class="material-symbols-outlined">folder_open</i></span>
-            <span id="export" class="icon-button" title="Export to PDF"><i class="material-symbols-outlined">picture_as_pdf</i></span>
+        <div id="menucontainer">
+
+            <div id="menu">
+                <div id="colorSwatches"></div>
+                <input type="range" id="penSize" min="1" max="10" value="1">
+                <span id="pen" class="icon-button" title="Pen"><i class="material-symbols-outlined">ink_pen</i></span>
+                <span id="eraser" class="icon-button" title="Eraser"><i class="material-symbols-outlined">ink_eraser</i></span>
+                <span id="pan" class="icon-button" title="Pan"><i class="material-symbols-outlined">pan_tool</i></span>
+                <span id="zoomInButton" class="icon-button" title="Zoom In"><i class="material-symbols-outlined">zoom_in</i></span>
+                <span id="zoomOutButton" class="icon-button" title="Zoom Out"><i class="material-symbols-outlined">zoom_out</i></span>
+                <span id="zoomFullButton" class="icon-button" title="Fit Width"><i class="material-symbols-outlined">zoom_out_map</i></span>
+                <span id="newPage" class="icon-button" title="New Page"><i class="material-symbols-outlined">note_add</i></span>
+                <span id="delPage" class="icon-button" title="Delete Page"><i class="material-symbols-outlined">scan</i></span>                      
+                <span id="mainMenu" class="icon-button" title="Main Menu"><i class="material-symbols-outlined">menu</i></span>                      
+            </div>
+
+            <div id="hamburgerMenu">
+                <span id="download" class="icon-button" title="Download Document"><i class="material-symbols-outlined">download</i></span>
+                <span id="open" class="icon-button" title="Open"><i class="material-symbols-outlined">folder_open</i></span>
+                <span id="export" class="icon-button" title="Export to PDF"><i class="material-symbols-outlined">picture_as_pdf</i></span>
+                <span id="print" class="icon-button" title="Print"><i class="material-symbols-outlined">print</i></span>
+                <span id="settings" class="icon-button" title="Document Settings"><i class="material-symbols-outlined">settings</i></span>
+                <span id="mainMenuClose" class="icon-button" title="Close Main Menu"><i class="material-symbols-outlined">close</i></span>
+            </div>
         </div>
         
-        <!-- <div id="menu">
-            <div id="colorSwatches"></div>
-            <input type="range" id="penSize" min="1" max="10" value="1">
-            <button id="pen">Pen</button>
-            <button id="eraser">Eraser</button>
-            <button id="pan">Pan</button>
-            <button id="zoomInButton">Zoom In</button>
-            <button id="zoomOutButton">Zoom Out</button>
-            <button id="save">Save</button>
-            <button id="open">Open</button>
-            <button id="export">Export to PDF</button>
-        </div> -->
+        <div id="settingsPage">
+            <div id="settingsContainer">
+                <div id="settingsHeader">
+                    <h3>Settings</h3>
+                    <span id="settingsClose" class="icon-button" title="Close"><i class="material-symbols-outlined">close</i></span>
+                </div>
+                <div id="settingsContent">
+                    <label for="projectTitle">Project Title:</label>
+                    <input type="text" id="projectTitle" name="projectTitle">
+                    
+                    <label for="pageSize">Paper Page Size:</label>
+                    <select id="pageSize" name="pageSize">
+                        <option value="letter">Letter</option>
+                        <option value="legal">Legal</option>
+                        <option value="custom">Custom</option>
+                    </select>
+                    <div id="customSize">
+                        <label for="length">Length:</label>
+                        <input type="number" id="length" name="length">
+                        <label for="width">Width:</label>
+                        <input type="number" id="width" name="width">
+                    </div>
+        
+                    <label for="lineStyle">Paper Line Style:</label>
+                    <select id="lineStyle" name="lineStyle">
+                        <option value="ruled">Ruled</option>
+                        <option value="collegeRuled">College Ruled</option>
+                        <option value="graph">Graph</option>
+                        <option value="isometric">Isometric</option>
+                    </select>
+        
+                    <label for="backgroundColor">Paper Background Color:</label>
+                    <input type="color" id="backgroundColor" name="backgroundColor">
+                </div>
+            </div>
+        </div>
+        
         <canvas id="myCanvas" resize></canvas>
         <script type="text/javascript" src="js/controls.js"></script>
     </body>

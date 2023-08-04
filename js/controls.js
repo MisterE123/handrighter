@@ -37,7 +37,7 @@ document.getElementById('zoomOutButton').addEventListener('click', function() {
     main_api.zoom(1/1.2); // Zoom out by 20%
 });
 
-document.getElementById('zoomFulltButton').addEventListener('click', function() {
+document.getElementById('zoomFullButton').addEventListener('click', function() {
     main_api.fitToWidth(); // Zoom to page
 });
 
@@ -47,5 +47,31 @@ document.addEventListener('paperjs-loaded', (event) => {
 });
 
 
+document.getElementById('mainMenu').addEventListener('click', function() {
+    document.getElementById('menu').style.display = 'none';
+    document.getElementById('hamburgerMenu').style.display = 'flex'; // Change this to 'block' to display the menu
+});
+
+document.getElementById('mainMenuClose').addEventListener('click', function() {
+    document.getElementById('menu').style.display = 'flex';
+    document.getElementById('hamburgerMenu').style.display = 'none';
+});
 
 
+
+
+document.getElementById('settings').addEventListener('click', function() {
+    document.getElementById('settingsPage').style.display = 'block';
+});
+
+document.getElementById('settingsClose').addEventListener('click', function() {
+    document.getElementById('settingsPage').style.display = 'none';
+});
+
+// document.getElementById('pageSize').addEventListener('change', function() {
+//     if (this.value === 'custom') {
+//         document.getElementById('customSize').style.display = 'block';
+//     } else {
+//         document.getElementById('customSize').style.display = 'none';
+//     }
+// });

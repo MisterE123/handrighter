@@ -11,7 +11,8 @@ canvas[resize] {
     height: 100%;
     background-color: #0c0c0b;
 }
-#menu {
+
+#menucontainer {
     position: fixed;
     top: 0;
     left: 0;
@@ -19,16 +20,28 @@ canvas[resize] {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #5a5353;
-    padding: 10px;
+    background-color: #cfc6b8;
+    padding: 5px;
     z-index: 999;
     user-select: none;
-    /* flex-wrap: wrap; Allow menu items to wrap to a new line */
+    flex-wrap: wrap; /* Allow menu items to wrap to a new line */
+}
+
+#menu {
+    display: flex;
+    align-items: center;
+}
+
+#hamburgerMenu {
+    display: none;
+    justify-content: flex-end; /* This will align the contents to the right */
+    flex-direction: row; /* Set the flex direction to row */
 }
 
 #iconbuttons {
     flex-wrap: wrap; /* Allow menu items to wrap to a new line */
 }
+
 
 .icon-button {
     cursor: pointer;
@@ -38,11 +51,11 @@ canvas[resize] {
     width: 40px; /* Set a fixed width */
     height: 40px; /* Set a fixed height */
     border-radius: 50%; /* Make the icons circular */
-    background-color: #888;
+    background-color: #a0938e;
+    color: #302c2e;
     transition: background-color 0.2s;
     flex: 0 0 auto;
     margin: 4px; /* Add some space between the icon buttons */
-
 }
 
 
@@ -58,23 +71,82 @@ canvas[resize] {
 }
 
 
-
 #colorSwatches {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* Prevent wrapping to a new line */
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
     gap: 4px;
+    height: 20px; /* Fixed height */
+    align-items: center; /* Center align vertically */
 }
 
-/* Style each color swatch as a circle */
 #colorSwatches button {
-    width: 30px; /* Adjust the size of the swatch */
-    height: 30px; /* Adjust the size of the swatch */
-    border-radius: 50%; /* This makes the element circular */
-    cursor: pointer; /* Optional: Add a pointer cursor on hover */
-}
-#colorSwatches button {
-    border: none;
-    cursor: pointer;
     width: 20px;
     height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px, white;
+}
+
+/* Specific width for pen size slider */
+#penSize {
+    width: 100px; /* You can adjust this value as needed */
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+#settingsPage {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+#settingsContainer {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 80%;
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#settingsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #5a5353;
+    color: #fff;
+}
+
+#settingsContent {
+    padding: 15px;
+    overflow-y: scroll; /* Enable vertical scrolling */
+    height: 70vh; /* Set a fixed height */
+}
+
+#customSize {
+    display: none; /* Hide by default */
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
