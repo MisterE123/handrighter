@@ -333,14 +333,6 @@ main_api.getViewTopHeight = function() {
 };
 
 
-
-// to be updated in controls.js
-main_api.refreshScrollbar = function() {
-	return null
-};
-
-
-
 // signal that we are ready to load
 var loadevent = new CustomEvent('paperjs-loaded');
 document.dispatchEvent(loadevent);
