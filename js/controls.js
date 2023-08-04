@@ -93,8 +93,38 @@ main_api.refreshScrollbar = function() {
     // reset scrollbar
     document.getElementById('scrollbar').style.height = heightPercent.toString() + '%'; 
     document.getElementById('scrollbar').style.top = viewTopPercent.toString() + '%'; 
-    console.log(document.getElementById('scrollbar').style.top)
+    // console.log(document.getElementById('scrollbar').style.top)
 };
+
+
+var scrollbar = document.getElementById('scrollbar');
+var scrollbarContainer = document.getElementById('scrollbarContainer'); // Assuming the container has this ID
+
+scrollbar.addEventListener('mousedown', function(event) {
+    var initialMouseY = event.clientY;
+    var initialTop = parseFloat(scrollbar.style.top || 0);
+
+    function onMouseMove(event) {
+        var deltaY = event.clientY - initialMouseY;
+        var newTop = initialTop + deltaY / scrollbarContainer.offsetHeight * 100;
+        newTop = Math.max(0, Math.min(100, newTop)); // Clamp between 0 and 100
+        main_api.setCenterByPercent(newTop);
+        // Set the scrollbar's top position
+        main_api.refreshScrollbar()
+        // Call the function in main_api to update the view center
+        
+
+    }
+
+    function onMouseUp() {
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
+    }
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+});
+
 
 
 

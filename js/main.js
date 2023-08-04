@@ -319,13 +319,14 @@ main_api.getDocumentHeight = function() {
 }
 
 main_api.getCurrentViewHeight = function() {
-	return view.size.height*view.zoom
+	return view.size.height/view.zoom
 };
 
 main_api.setCenterByPercent = function(Percent) {
 	var docHeight = main_api.getDocumentHeight()
 	var newCenter = docHeight * (Percent/100)
-	view.center.y = newCenter
+	view.center = new Point(view.center.x, newCenter)
+	console.log(view.center.y)
 };
 
 main_api.getViewTopHeight = function() {
@@ -334,6 +335,10 @@ main_api.getViewTopHeight = function() {
 
 main_api.getViewBottomHeight = function() {
 	return view.center.y + main_api.get_currentViewHeight() / 2;
+}
+
+main_api.getViewCenterY = function() {
+	return view.center.y
 }
 
 
