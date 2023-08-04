@@ -280,6 +280,31 @@ main_api.fitToWidth = function() {
 	view.center = doc_settings.view_center;
 };
 
+main_api.add_page = function() {
+	// Calculate the y-offset for the new page. This will be below the last page in the pages array.
+	var yOffset = y_padding; // Start with the initial padding
+	for (var i = 0; i < pages.length; i++) {
+		yOffset += pages[i].page_size.height + y_padding; // Add the height of each existing page plus padding
+	}
+
+	// Create the new page using the make_page function, using the default settings and the calculated y-offset
+	var newPage = make_page(
+		doc_settings.default_page_size.width,
+		doc_settings.default_page_size.height,
+		doc_settings.default_bg,
+		doc_settings.default_line_style,
+		yOffset,
+		null
+	);
+
+	// Add the new page to the pages array
+	pages.push(newPage);
+
+	// Draw the new page using the draw_page function
+	draw_page(newPage);
+};
+
+
 
 // signal that we are ready to load
 var loadevent = new CustomEvent('paperjs-loaded');

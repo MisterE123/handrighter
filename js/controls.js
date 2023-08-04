@@ -41,6 +41,11 @@ document.getElementById('zoomFullButton').addEventListener('click', function() {
     main_api.fitToWidth(); // Zoom to page
 });
 
+document.getElementById('newPage').addEventListener('click', function() {
+    main_api.add_page(); 
+});
+
+
 document.addEventListener('paperjs-loaded', (event) => {
     loaded = true
     main_api.load_new_doc();
