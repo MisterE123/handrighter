@@ -46,11 +46,9 @@ document.getElementById('newPage').addEventListener('click', function() {
 });
 
 
-document.addEventListener('paperjs-loaded', (event) => {
-    loaded = true
-    main_api.load_new_doc();
-});
 
+
+// hamburger menu
 
 document.getElementById('mainMenu').addEventListener('click', function() {
     document.getElementById('menu').style.display = 'none';
@@ -63,7 +61,7 @@ document.getElementById('mainMenuClose').addEventListener('click', function() {
 });
 
 
-
+// settings
 
 document.getElementById('settings').addEventListener('click', function() {
     document.getElementById('settingsPage').style.display = 'block';
@@ -80,3 +78,51 @@ document.getElementById('settingsClose').addEventListener('click', function() {
 //         document.getElementById('customSize').style.display = 'none';
 //     }
 // });
+
+
+
+
+// scrollbar
+function updateScrollbarHeight() {
+    // Get the menu element by its ID
+    var menuElement = document.getElementById('menucontainer');
+
+    // Get the menu's height
+    var menuHeight = menuElement.offsetHeight;
+
+    // Get the total height from main_api
+    var totalHeight = main_api.updateScrollbarHeight();
+
+    // Get the viewport height (excluding the menu)
+    var viewportHeight = window.innerHeight - menuHeight;
+
+    // Set the scrollbar container's height to the viewport height
+    document.getElementById('scrollbarContainer').style.height = viewportHeight + 'px';
+
+    // Set the scrollbar's height to the total height
+    document.getElementById('scrollbar').style.height = totalHeight + 'px';
+}
+  
+  
+  // Event listener for scrollbar movement
+  document.getElementById('scrollbarContainer').addEventListener('scroll', function() {
+    // Get the scrollbar's scroll position
+    var scrollPosition = this.scrollTop;
+  
+    // Update the canvas view center using main_api
+    main_api.setScrollPosition(scrollPosition);
+  });
+  
+  // Call updateScrollbarHeight and updateScrollbarPosition at appropriate times
+  
+
+
+
+
+
+
+document.addEventListener('paperjs-loaded', (event) => {
+    loaded = true
+    main_api.load_new_doc();
+    updateScrollbarHeight()
+});

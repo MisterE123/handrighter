@@ -150,3 +150,19 @@ select {
     border-radius: 5px;
     border: 1px solid #ccc;
 }
+
+
+
+#scrollbarContainer {
+    position: fixed;
+    right: 0;
+    top: 0; /* Adjust this based on the menu height */
+    bottom: 0;
+    width: 20px; /* Adjust the width as needed */
+    overflow-y: scroll;
+}
+
+#scrollbar {
+    width: 100%;
+    background-color: #a0938e;
+}
