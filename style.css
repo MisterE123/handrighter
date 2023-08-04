@@ -165,7 +165,7 @@ select {
   
 #scrollbar {
     width: 100%;     /* Full width of the container */
-    height: 50%;     /* Example height, you can adjust this */
+    height: 0%;     /* Example height, you can adjust this */
     background-color: #a0938e; /* Color of the scrollbar */
     cursor: pointer; /* Cursor style when hovering over the scrollbar */
 }
