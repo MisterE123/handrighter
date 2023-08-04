@@ -93,7 +93,7 @@ main_api.refreshScrollbar = function() {
     // reset scrollbar
     document.getElementById('scrollbar').style.height = heightPercent.toString() + '%'; 
     document.getElementById('scrollbar').style.top = viewTopPercent.toString() + '%'; 
-    console.log(viewTopPercent)
+    console.log(document.getElementById('scrollbar').style.top)
 };
 
 
