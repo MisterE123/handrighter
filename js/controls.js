@@ -83,10 +83,22 @@ document.getElementById('settingsClose').addEventListener('click', function() {
 
 
 
+// scrollbar
+main_api.refreshScrollbar = function() {
+	var docHeight = main_api.getDocumentHeight();
+    var viewHeight = main_api.getCurrentViewHeight();
+    var heightPercent = viewHeight/docHeight * 100;
+    var viewTop = main_api.getViewTopHeight();
+    var viewTopPercent = viewTop / docHeight * 100;
+    // reset scrollbar
+    document.getElementById('scrollbar').style.height = heightPercent.toString() + '%'; 
+    document.getElementById('scrollbar').style.top = viewTopPercent.toString() + '%'; 
+};
+
 
 
 document.addEventListener('paperjs-loaded', (event) => {
     loaded = true
     main_api.load_new_doc();
-    updateScrollbarHeight()
+    main_api.refreshScrollbar()
 });

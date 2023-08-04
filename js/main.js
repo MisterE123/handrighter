@@ -213,28 +213,27 @@ eraserTool.onMouseUp = function(event) {
 	originalPage = null;
 };
 
-
 // panning tool
 var panningTool = new Tool();
-var lastMousePoint;
+var firstMousePoint;
 
 panningTool.onMouseDown = function(event) {
-  	lastMousePoint = event.point;
+	firstMousePoint = event.point;
 };
-
 panningTool.onMouseDrag = function(event) {
 	// Calculate how far the mouse has moved since the last drag event
-	var offset = lastMousePoint - event.point;
-
+	var offset = firstMousePoint.subtract(event.point); 
+	// Apply the current zoom level
+	offset = offset.multiply(view.zoom);
 	// Move the view by the calculated offset
-
 	view.scrollBy(offset);
-	
-    // Update the document settings with the new view center
+	// Update the document settings with the new view center
 	docSettings.view_center = view.center;
-	// Save the current mouse position for the next drag event
-	lastMousePoint = event.point;
+	main_api.refreshScrollbar();
 };
+
+  
+
 
 // tool selector
 main_api.setActiveTool = function(toolName) {
@@ -257,6 +256,7 @@ main_api.setActiveTool = function(toolName) {
 main_api.zoom = function(factor) {
 	view.zoom *= factor
 	doc_settings.view_zoom = view.zoom
+	main_api.refreshScrollbar();
 }
 
 main_api.fitToWidth = function() {
@@ -278,6 +278,7 @@ main_api.fitToWidth = function() {
 	var newCenterX = (pageWidth / 2) + x_padding;
 	doc_settings.view_center = new Point(newCenterX, view.center.y);
 	view.center = doc_settings.view_center;
+	main_api.refreshScrollbar();
 };
 
 main_api.add_page = function() {
@@ -302,9 +303,41 @@ main_api.add_page = function() {
 
 	// Draw the new page using the draw_page function
 	draw_page(newPage);
+	// reset the scrollbar
+	main_api.refreshScrollbar()
 };
 
 
+main_api.getDocumentHeight = function() {
+	var height = y_padding;
+	pages.forEach(function(page){
+		height += page.page_size.height;
+		height += y_padding
+	});
+	height += y_padding;
+	return height;
+}
+
+main_api.getCurrentViewHeight = function() {
+	return view.size.height/view.zoom
+};
+
+main_api.setCenterByPercent = function(Percent) {
+	var docHeight = main_api.getDocumentHeight()
+	var newCenter = docHeight * (Percent/100)
+	view.center.y = newCenter
+};
+
+main_api.getViewTopHeight = function() {
+	return view.center.y - main_api.getCurrentViewHeight() / 2;
+};
+
+
+
+// to be updated in controls.js
+main_api.refreshScrollbar = function() {
+	return null
+};
 
 
 

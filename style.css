@@ -30,6 +30,7 @@ canvas[resize] {
 #menu {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 #hamburgerMenu {
@@ -73,10 +74,10 @@ canvas[resize] {
 
 #colorSwatches {
     display: flex;
-    flex-wrap: nowrap; /* Prevent wrapping to a new line */
+    flex-wrap: wrap; /* Allow wrapping to a new line */
     overflow-x: auto; /* Enable horizontal scrolling if needed */
     gap: 4px;
-    height: 20px; /* Fixed height */
+    height: auto; /* Adjust the height as needed */
     align-items: center; /* Center align vertically */
 }
 
@@ -151,4 +152,20 @@ select {
     border: 1px solid #ccc;
 }
 
-
+#scrollbarContainer {
+    position: fixed; /* Fixed position on the right side */
+    right: 0;        /* Align to the right edge */
+    top: 0;          /* Align to the top edge */
+    width: 10px;     /* Width of the scrollbar */
+    height: 100%;    /* Full height of the viewport */
+    overflow: hidden;/* Hide overflow content */
+    background-color:#302c2e;
+    z-index: 1000;
+}
+  
+#scrollbar {
+    width: 100%;     /* Full width of the container */
+    height: 50%;     /* Example height, you can adjust this */
+    background-color: #a0938e; /* Color of the scrollbar */
+    cursor: pointer; /* Cursor style when hovering over the scrollbar */
+}
