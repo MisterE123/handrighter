@@ -305,32 +305,6 @@ main_api.add_page = function() {
 };
 
 
-// scrollbar
-main_api.updateScrollbarHeight = function() {
-	// Calculate the total height of all pages, including padding
-	var totalHeight = 0;
-	pages.forEach(function(page) {
-	  totalHeight += page.page_size.height + y_padding;
-	});
-  
-	// Apply zoom factor
-	totalHeight *= doc_settings.view_zoom;
-  
-	// Return the calculated height
-	return totalHeight;
-  };
-  
-  main_api.setScrollPosition = function(scrollPosition) {
-	// Update the canvas view center
-	doc_settings.view_center.y = view.center.y - scrollPosition;
-	view.center = doc_settings.view_center;
-  };
-  
-  main_api.getScrollPosition = function() {
-	// Get the current scroll position of the canvas
-	return view.center.y - doc_settings.view_center.y;
-  };
-  
 
 
 
